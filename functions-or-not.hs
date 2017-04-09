@@ -3,6 +3,7 @@ main =  do
      let n =  read line :: Int
      readCases n
 
+
 isFunction :: [[Int]] -> Bool
 isFunction []  =  True
 isFunction (x:xs) = (all (isFnTest x) xs) && (isFunction xs)
@@ -13,6 +14,7 @@ isFnTest x y  = ((x !! 0) /=  (y !! 0)) || ((x !! 1)==(y !! 1))
 showRes :: Bool -> String
 showRes True = "YES"
 showRes False = "NO"
+
 
 readCases :: Int -> IO()
 readCases 0 = return ()

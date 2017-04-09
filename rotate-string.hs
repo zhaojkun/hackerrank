@@ -11,11 +11,9 @@ processCases :: Int -> IO()
 processCases 0 = return ()
 processCases n = do
 	     x <- getLine
-	     putStrLn $ processCase x
+	     putStrLn $ intercalate " " $ rotate x
 	     processCases (n-1)
 
-processCase :: String -> String
-processCase s = intercalate " " (rotate s)
 
 rotate :: String -> [String]
 rotate [] = []

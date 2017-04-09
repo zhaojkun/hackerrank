@@ -11,8 +11,7 @@ commonPrefix :: String -> String -> Int
 
 commonPrefix [] _ = 0
 commonPrefix _ [] = 0
-commonPrefix (x:xs) (y:ys) = if x==y then 1+val
-	     	    	     else val
-			     where val = commonPrefix xs ys
+commonPrefix (x:xs) (y:ys) = if x/=y then 0
+	     	    	     else 1 + (commonPrefix xs ys)
 	     
      

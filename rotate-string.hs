@@ -11,15 +11,9 @@ processCases :: Int -> IO()
 processCases 0 = return ()
 processCases n = do
 	     x <- getLine
-	     putStrLn $ intercalate " " $ rotate x
+	     putStrLn $ intercalate " " $ take (length x) $ rotate x
 	     processCases (n-1)
 
-
 rotate :: String -> [String]
-rotate [] = []
-rotate s = rotateInner (length s) s
+rotate (x:xs) = let cur = xs ++ [x] in cur : rotate cur
 
-
-rotateInner :: Int -> String -> [String]
-rotateInner 0 _ = []
-rotateInner n (x:xs) = (xs ++ [x]) : (rotateInner (n-1) (xs ++ [x]))

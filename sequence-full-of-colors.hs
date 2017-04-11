@@ -8,7 +8,7 @@ main = do
   putStrLn $ unlines $ map (show .isOk . (fullseq (ColorSeq 0 0 0 0 True))) $ tail $ lines x
   
 isOk :: ColorSeq -> Bool
-isOk (ColorSeq _ _ _ _ ok) = ok
+isOk (ColorSeq r g y b ok) = ok && (r==g) && (y==b)
 
 fullseq :: ColorSeq -> String -> ColorSeq
 

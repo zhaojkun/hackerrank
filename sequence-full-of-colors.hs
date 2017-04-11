@@ -5,7 +5,7 @@ data ColorSeq = ColorSeq Int Int Int Int Bool
 main :: IO()
 main = do
   x <- getContents
-  putStrLn $ unlines $ map (show .isOk . (fullseq (ColorSeq 0 0 0 0 True))) $ tail $ lines x
+  mapM_ (putStrLn . show. isOk . (fullseq (ColorSeq 0 0 0 0 True))) $ tail $ lines x
   
 isOk :: ColorSeq -> Bool
 isOk (ColorSeq r g y b ok) = ok && (r==g) && (y==b)

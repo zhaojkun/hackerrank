@@ -1,22 +1,16 @@
 import Data.List (nub)
 import Data.Map ((!))
 import qualified Data.Map as Map
-
+import Control.Monad
 main :: IO()
 main = do
-     line <- getLine
-     let n = read line :: Int
-     process n
-
-process :: Int -> IO()
-process 0 = return ()
-process n = do
-	[_,k] <- getInts <$> getLine
+  n <- read <$> getLine
+  replicateM_ n $ do
+    	[_,k] <- getInts <$> getLine
 	a <- getInts <$> getLine
         let counts = cntSeq a
         let seq = nub $ filter (\x -> if (Map.findWithDefault 0 x counts) >=k then True else False) $ a
 	if null seq then putStrLn "-1" else putStrLn $ unwords $ map show seq
-	process (n-1)
 
 cntSeq :: [Int] -> Map.Map Int Int
 cntSeq [] = Map.empty

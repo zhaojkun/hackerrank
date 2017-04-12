@@ -11,11 +11,8 @@ main = do
 process :: Int -> IO()
 process 0 = return ()
 process n = do
-	l1 <- getLine
-	l2 <- getLine
-	let kk = getInts l1
-	let a = getInts l2
-	let k = kk !! 1
+	[_,k] <- getInts <$> getLine
+	a <- getInts <$> getLine
         let counts = cntSeq a
         let seq = nub $ filter (\x -> if (Map.findWithDefault 0 x counts) >=k then True else False) $ a
 	if null seq then putStrLn "-1" else putStrLn $ unwords $ map show seq
